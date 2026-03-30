@@ -1,1 +1,366 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>לאונרדו - בוטים ואוטומציות לעסקים</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4efe6;
+      color: #2b2b2b;
+      line-height: 1.7;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 80px 0;
+      border-bottom: 1px solid #d8cfbf;
+      background: linear-gradient(to bottom, #f8f4ec, #f4efe6);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid #c9b89b;
+      background: rgba(255,255,255,0.7);
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 56px;
+      line-height: 1.2;
+      margin: 0 0 20px;
+    }
+
+    .subtitle {
+      font-size: 22px;
+      color: #5a574f;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 28px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    .btn-dark {
+      background: #1f1f1f;
+      color: white;
+    }
+
+    .btn-light {
+      background: rgba(255,255,255,0.75);
+      color: #2b2b2b;
+      border: 1px solid #bba98b;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid #e4dac9;
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #d9cfbf;
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .inner-card {
+      background: #f8f5ef;
+      border: 1px solid #eadfce;
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .mini-badge {
+      display: inline-block;
+      background: #ede3d3;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .flow-step {
+      background: white;
+      border: 1px solid #ece3d5;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .section-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 20px;
+      color: #625d55;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .service-box {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid #e4dac9;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .service-box h3 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .split-section {
+      background: rgba(255,255,255,0.5);
+      border-top: 1px solid #ddd2c2;
+      border-bottom: 1px solid #ddd2c2;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .fit-box {
+      background: #f8f5ef;
+      border: 1px solid #e7dccb;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 14px;
+      font-size: 18px;
+      color: #5d5952;
+    }
+
+    .dark-box {
+      background: #1f1f1f;
+      color: white;
+      border-radius: 30px;
+      padding: 32px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .dark-box p {
+      color: rgba(255,255,255,0.82);
+      font-size: 18px;
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta p {
+      max-width: 760px;
+      margin: 20px auto 30px;
+      font-size: 20px;
+      color: #605b54;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .split-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .subtitle,
+      .section-text,
+      .cta p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">לאונרדו · בוטים ואוטומציות לעסקים</div>
+        <h1>טכנולוגיה חכמה<br>שמניעה עסקים קדימה</h1>
+        <div class="subtitle">
+          בונים לעסקים בוטים לוואטסאפ וטלגרם, אוטומציות חכמות וחיבורי מערכות
+          שמסדרים תהליכים, חוסכים זמן ומשפרים את חוויית הלקוח.
+        </div>
+
+        <div class="buttons">
+          <a href="#" class="btn btn-dark">לתיאום שיחת היכרות</a>
+          <a href="#" class="btn btn-light">לראות איך זה עובד</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat-box">
+            <strong>24/7</strong>
+            מענה אוטומטי
+          </div>
+          <div class="stat-box">
+            <strong>זמן</strong>
+            חיסכון בתהליכים
+          </div>
+          <div class="stat-box">
+            <strong>סדר</strong>
+            ניהול פניות ולידים
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="inner-card">
+          <div class="mini-badge">אוטומציה</div>
+          <h2>דוגמה לתהליך: בוט לידים בוואטסאפ</h2>
+
+          <div class="flow-step">לקוח משאיר פנייה</div>
+          <div class="flow-step">הבוט שולח תגובה מיידית</div>
+          <div class="flow-step">נשאלות שאלות סינון</div>
+          <div class="flow-step">המידע נשמר אוטומטית</div>
+          <div class="flow-step">הפנייה מועברת לטיפול</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">מה אנחנו בונים לעסקים</h2>
+      <p class="section-text">
+        פתרונות פרקטיים שעוזרים לעסק להגיב מהר יותר, לעבוד מסודר יותר ולהפחית פעולות ידניות שחוזרות על עצמן.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-box">
+          <h3>בוטים לוואטסאפ</h3>
+          <p>מענה ראשוני, סינון לידים, איסוף פרטים והעברה לנציג.</p>
+        </div>
+
+        <div class="service-box">
+          <h3>בוטים לטלגרם</h3>
+          <p>בוטים לשירות, התראות, תהליכים פנימיים וקבלת מידע.</p>
+        </div>
+
+        <div class="service-box">
+          <h3>אוטומציות עסקיות</h3>
+          <p>חיבור בין טפסים, הודעות, גיליונות, מיילים ו-CRM.</p>
+        </div>
+
+        <div class="service-box">
+          <h3>חיבור מערכות</h3>
+          <p>התאמה בין הכלים שכבר עובדים אצלך בעסק.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="split-section">
+    <div class="container split-grid">
+      <div>
+        <h2 style="font-size:40px; margin-top:0;">למי זה מתאים</h2>
+        <div class="fit-box">עסקים שמקבלים הרבה פניות ורוצים תגובה מהירה ומסודרת.</div>
+        <div class="fit-box">עסקים שעובדים ידנית ורוצים לחסוך זמן בתהליכים חוזרים.</div>
+        <div class="fit-box">עסקים שצריכים לחבר בין מערכות, הודעות, טפסים ולקוחות.</div>
+      </div>
+
+      <div class="dark-box">
+        <div style="opacity:0.7; font-size:14px;">היתרון שלך</div>
+        <h3 style="font-size:34px; margin-top:8px;">פחות התעסקות, יותר תהליך</h3>
+        <p>
+          המטרה היא לא רק לבנות בוט יפה, אלא ליצור לעסק תהליך שעובד בפועל —
+          משלב הפנייה, דרך איסוף המידע ועד המשך טיפול מסודר.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="section-title">רוצים לבדוק מה אפשר לייעל בעסק</h2>
+      <p>
+        שיחת היכרות קצרה תעזור להבין איזה בוט או אוטומציה יכולים לחסוך לכם זמן ולסדר את התהליך העסקי.
+      </p>
+
+      <div class="buttons" style="justify-content:center;">
+        <a href="#" class="btn btn-dark">להתחיל עכשיו</a>
+        <a href="#" class="btn btn-light">לקבל פרטים נוספים</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
