@@ -39,40 +39,97 @@
       position: fixed;
       inset: 0;
       background:
-        linear-gradient(rgba(243, 238, 228, 0.92), rgba(243, 238, 228, 0.96)),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
-      opacity: 1;
+        linear-gradient(rgba(243, 238, 228, 0.94), rgba(243, 238, 228, 0.97)),
+        radial-gradient(circle at top, rgba(255,255,255,0.65), transparent 34%);
       z-index: -3;
     }
 
     .texture {
       position: fixed;
       inset: 0;
-      background-image: radial-gradient(circle at top, rgba(255,255,255,0.55), transparent 35%);
-      z-index: -2;
       pointer-events: none;
+      z-index: -2;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .sketch-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.09;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(184,154,99,0.18), transparent 17%),
+        radial-gradient(circle at 80% 18%, rgba(184,154,99,0.10), transparent 16%),
+        radial-gradient(circle at 72% 68%, rgba(184,154,99,0.08), transparent 18%);
     }
 
     .topbar {
       border-bottom: 1px solid #d8cdbb;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
 
     .topbar-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 0;
+      padding: 20px 0;
       gap: 20px;
     }
 
     .brand {
-      font-size: 14px;
-      letter-spacing: 0.25em;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c5a770, #a9894f);
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.28), 0 8px 20px rgba(169,137,79,0.22);
+      position: relative;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      inset: 7px;
+    }
+
+    .brand-mark::after {
+      inset: 13px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #7a7266;
+      color: #6f675d;
       font-weight: bold;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: #8a8175;
     }
 
     .top-links {
@@ -82,59 +139,92 @@
       font-size: 15px;
     }
 
+    .top-links a:hover {
+      color: #1f1f1f;
+    }
+
     .hero {
       position: relative;
-      padding: 70px 0 90px;
+      padding: 90px 0 110px;
       overflow: hidden;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(184,154,99,0.16), transparent 42%);
+      top: 30px;
+      right: -140px;
+      width: 430px;
+      height: 430px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,99,0.18);
+      box-shadow:
+        0 0 0 40px rgba(184,154,99,0.05),
+        0 0 0 80px rgba(184,154,99,0.03);
       pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: -100px;
+      bottom: 40px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,154,99,0.10), transparent 65%);
+      pointer-events: none;
+      filter: blur(10px);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1.05fr;
-      gap: 50px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 56px;
       align-items: center;
     }
 
-    .badge {
+    .hero-copy {
+      position: relative;
+    }
+
+    .hero-badge {
       display: inline-block;
-      padding: 10px 18px;
+      padding: 11px 18px;
       border: 1px solid #ccb792;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.78);
       border-radius: 999px;
       font-size: 14px;
       color: #5c554b;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
       margin-bottom: 26px;
     }
 
-    h1 {
-      font-size: 68px;
-      line-height: 1.05;
-      margin: 0 0 24px;
-      letter-spacing: -0.03em;
+    .hero-title {
+      font-size: 76px;
+      line-height: 1.02;
+      margin: 0 0 22px;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+    }
+
+    .hero-title .gold {
+      color: #a88953;
     }
 
     .hero-subtitle {
-      font-size: 24px;
+      font-size: 23px;
       color: #5f5a52;
       max-width: 760px;
       margin-bottom: 34px;
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
-    .buttons {
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 34px;
     }
 
     .btn {
@@ -149,157 +239,252 @@
     .btn-dark {
       background: #1f1f1f;
       color: white;
-      box-shadow: 0 12px 30px rgba(31,31,31,0.2);
+      box-shadow: 0 14px 34px rgba(31,31,31,0.18);
     }
 
     .btn-dark:hover {
       opacity: 0.92;
+      transform: translateY(-1px);
     }
 
     .btn-light {
-      background: rgba(255,255,255,0.84);
+      background: rgba(255,255,255,0.86);
       color: #2b2b2b;
       border: 1px solid #c8b89b;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
     }
 
     .btn-light:hover {
       background: white;
+      transform: translateY(-1px);
     }
 
-    .stats {
+    .hero-points {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
-    .stat-box {
-      background: rgba(255,255,255,0.78);
+    .hero-point {
+      background: rgba(255,255,255,0.80);
       border: 1px solid #dfd5c5;
       border-radius: 28px;
       padding: 24px;
-      box-shadow: 0 15px 35px rgba(80,67,49,0.07);
+      box-shadow: 0 14px 35px rgba(80,67,49,0.07);
+      position: relative;
+      overflow: hidden;
     }
 
-    .stat-box strong {
+    .hero-point::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(to left, #b99b65, #dcc89f);
+      opacity: 0.85;
+    }
+
+    .hero-point strong {
       display: block;
-      font-size: 38px;
+      font-size: 36px;
       margin-bottom: 8px;
       line-height: 1;
     }
 
-    .stat-box span {
+    .hero-point span {
       display: block;
       color: #69645d;
       font-size: 16px;
     }
 
-    .process-wrap {
+    .hero-visual-wrap {
       position: relative;
     }
 
-    .process-wrap::before {
+    .hero-visual-wrap::before {
       content: "";
       position: absolute;
-      inset: -20px;
-      background: rgba(255,255,255,0.22);
-      filter: blur(45px);
+      inset: -28px;
       border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.30), transparent 70%);
+      filter: blur(18px);
       z-index: 0;
     }
 
-    .process-card {
+    .hero-visual {
       position: relative;
       z-index: 1;
-      background: rgba(255,255,255,0.62);
+      min-height: 620px;
+      border-radius: 36px;
+      background:
+        linear-gradient(rgba(248,243,234,0.92), rgba(248,243,234,0.96)),
+        radial-gradient(circle at top left, rgba(184,154,99,0.10), transparent 35%);
       border: 1px solid #d8cdbb;
-      border-radius: 34px;
-      padding: 20px;
-      box-shadow: 0 30px 80px rgba(70,57,38,0.12);
-      backdrop-filter: blur(10px);
-    }
-
-    .process-inner {
-      background: rgba(248,243,234,0.95);
-      border: 1px solid #e7dccb;
-      border-radius: 28px;
+      box-shadow: 0 34px 90px rgba(70,57,38,0.12);
+      overflow: hidden;
       padding: 28px;
     }
 
-    .process-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 24px;
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      left: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,99,0.18);
+      box-shadow:
+        0 0 0 40px rgba(184,154,99,0.05),
+        0 0 0 80px rgba(184,154,99,0.03);
+      pointer-events: none;
     }
 
-    .mini-badge {
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      bottom: -100px;
+      right: -70px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,99,0.14);
+      box-shadow:
+        0 0 0 32px rgba(184,154,99,0.04),
+        0 0 0 64px rgba(184,154,99,0.02);
+      pointer-events: none;
+    }
+
+    .blueprint {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+    }
+
+    .blueprint-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(150,130,95,0.35);
+    }
+
+    .c1 { width: 320px; height: 320px; top: 54px; right: 60px; }
+    .c2 { width: 240px; height: 240px; top: 95px; right: 100px; }
+    .c3 { width: 120px; height: 120px; top: 155px; right: 160px; }
+    .c4 { width: 180px; height: 180px; bottom: 80px; left: 55px; }
+
+    .blueprint-line {
+      position: absolute;
+      background: rgba(150,130,95,0.30);
+      height: 1px;
+    }
+
+    .l1 { width: 180px; top: 212px; right: 10px; }
+    .l2 { width: 170px; top: 214px; right: 268px; transform: rotate(-28deg); transform-origin: right center; }
+    .l3 { width: 130px; bottom: 168px; left: 110px; transform: rotate(30deg); transform-origin: left center; }
+
+    .visual-card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid #e2d7c7;
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: 0 16px 34px rgba(83,71,50,0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .visual-card.main {
+      width: 78%;
+      margin-right: auto;
+      margin-top: 22px;
+    }
+
+    .visual-card.secondary {
+      width: 66%;
+      margin-top: 18px;
+      margin-right: 70px;
+    }
+
+    .visual-label {
       display: inline-block;
-      background: #ede3d3;
-      border: 1px solid #e1d5c2;
-      color: #665f55;
-      border-radius: 999px;
       padding: 8px 14px;
-      font-size: 14px;
+      border-radius: 999px;
+      background: #ede3d3;
+      border: 1px solid #dfd0bb;
+      color: #665f55;
+      font-size: 13px;
       margin-bottom: 14px;
     }
 
-    .process-title {
-      font-size: 34px;
-      margin: 0;
+    .visual-card h3 {
+      margin: 0 0 14px;
+      font-size: 30px;
       line-height: 1.2;
-    }
-
-    .gear {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
-      border-radius: 50%;
-      background: linear-gradient(to bottom left, #c8aa70, #a9894f);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 22px;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.2);
     }
 
     .flow-step {
       display: flex;
       align-items: center;
       gap: 14px;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.96);
       border: 1px solid #ece3d5;
-      border-radius: 22px;
-      padding: 15px 16px;
-      margin-bottom: 12px;
+      border-radius: 20px;
+      padding: 14px 15px;
+      margin-bottom: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
 
     .flow-step-number {
-      width: 38px;
-      height: 38px;
-      min-width: 38px;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
       border-radius: 50%;
       background: #2a2926;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
     }
 
     .flow-note {
-      margin-top: 18px;
+      margin-top: 16px;
       background: #efe5d6;
       border: 1px solid #dfd0bb;
-      border-radius: 22px;
-      padding: 16px 18px;
+      border-radius: 20px;
+      padding: 15px 16px;
       color: #5a544a;
-      font-size: 16px;
+      font-size: 15px;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .mini-stat {
+      background: #fbf8f2;
+      border: 1px solid #e8dece;
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .mini-stat span {
+      color: #6d665d;
+      font-size: 14px;
     }
 
     section {
@@ -452,7 +637,7 @@
 
     .dark-box {
       position: sticky;
-      top: 25px;
+      top: 95px;
       background: #1f1f1f;
       color: white;
       border: 1px solid #3c372f;
@@ -583,9 +768,9 @@
       font-size: 14px;
     }
 
-    @media (max-width: 1100px) {
-      h1 {
-        font-size: 54px;
+    @media (max-width: 1150px) {
+      .hero-title {
+        font-size: 58px;
       }
 
       .hero-grid,
@@ -597,6 +782,12 @@
 
       .dark-box {
         position: static;
+      }
+
+      .visual-card.main,
+      .visual-card.secondary {
+        width: 100%;
+        margin-right: 0;
       }
     }
 
@@ -616,12 +807,12 @@
       .services-grid,
       .steps-grid,
       .contact-grid,
-      .stats {
+      .hero-points {
         grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: 40px;
+      .hero-title {
+        font-size: 42px;
       }
 
       .hero-subtitle,
@@ -634,10 +825,12 @@
         font-size: 34px;
       }
 
-      .process-title {
-        font-size: 28px;
+      .hero-visual {
+        min-height: auto;
+        padding: 18px;
       }
 
+      .visual-card h3,
       .service-box h3,
       .step-box h3 {
         font-size: 24px;
@@ -656,7 +849,7 @@
       }
 
       .hero {
-        padding: 50px 0 70px;
+        padding: 55px 0 75px;
       }
     }
   </style>
@@ -664,10 +857,18 @@
 <body>
   <div class="site-bg"></div>
   <div class="texture"></div>
+  <div class="sketch-overlay"></div>
 
   <header class="topbar">
     <div class="container topbar-inner">
-      <div class="brand">LEONARDO</div>
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-text">
+          <div class="brand-name">LEONARDO</div>
+          <div class="brand-sub">בוטים ואוטומציות לעסקים</div>
+        </div>
+      </div>
+
       <nav class="top-links">
         <a href="#services">שירותים</a>
         <a href="#how">איך זה עובד</a>
@@ -679,16 +880,58 @@
 
   <section class="hero">
     <div class="container hero-grid">
-      <div class="process-wrap">
-        <div class="process-card">
-          <div class="process-inner">
-            <div class="process-head">
-              <div>
-                <div class="mini-badge">דוגמה לתהליך</div>
-                <h2 class="process-title">בוט לידים לעסק</h2>
-              </div>
-              <div class="gear">⚙</div>
-            </div>
+      <div class="hero-copy">
+        <div class="hero-badge">לאונרדו · בוטים ואוטומציות לעסקים</div>
+
+        <h1 class="hero-title">
+          בונים <span class="gold">תהליכים חכמים</span><br>
+          שמניעים עסקים קדימה
+        </h1>
+
+        <div class="hero-subtitle">
+          בוטים לוואטסאפ וטלגרם, אוטומציות עסקיות וחיבורי מערכות —
+          בעיצוב מדויק, בחשיבה פרקטית, ובמטרה אחת ברורה:
+          לגרום לעסק שלך לעבוד מסודר יותר, מהר יותר וחכם יותר.
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-dark">לתיאום שיחת היכרות</a>
+          <a href="#how" class="btn btn-light">לראות איך זה עובד</a>
+        </div>
+
+        <div class="hero-points">
+          <div class="hero-point">
+            <strong>24/7</strong>
+            <span>מענה אוטומטי לעסק</span>
+          </div>
+
+          <div class="hero-point">
+            <strong>זמן</strong>
+            <span>פחות טיפול ידני</span>
+          </div>
+
+          <div class="hero-point">
+            <strong>סדר</strong>
+            <span>ניהול פניות ותהליכים</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-wrap">
+        <div class="hero-visual">
+          <div class="blueprint">
+            <div class="blueprint-circle c1"></div>
+            <div class="blueprint-circle c2"></div>
+            <div class="blueprint-circle c3"></div>
+            <div class="blueprint-circle c4"></div>
+            <div class="blueprint-line l1"></div>
+            <div class="blueprint-line l2"></div>
+            <div class="blueprint-line l3"></div>
+          </div>
+
+          <div class="visual-card main">
+            <div class="visual-label">דוגמה לתהליך</div>
+            <h3>בוט לידים לעסק</h3>
 
             <div class="flow-step">
               <div class="flow-step-number">1</div>
@@ -717,34 +960,27 @@
 
             <div class="flow-note">פחות טיפול ידני, יותר תהליך מסודר.</div>
           </div>
-        </div>
-      </div>
 
-      <div>
-        <div class="badge">לאונרדו · בוטים ואוטומציות לעסקים</div>
-        <h1>טכנולוגיה חכמה<br>שמניעה עסקים קדימה</h1>
-        <div class="hero-subtitle">
-          בונים לעסקים בוטים לוואטסאפ וטלגרם, אוטומציות חכמות וחיבורי מערכות
-          שמסדרים תהליכים, חוסכים זמן ומשפרים את חוויית הלקוח.
-        </div>
-
-        <div class="buttons">
-          <a href="#contact" class="btn btn-dark">לתיאום שיחת היכרות</a>
-          <a href="#how" class="btn btn-light">לראות איך זה עובד</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat-box">
-            <strong>24/7</strong>
-            <span>מענה אוטומטי</span>
-          </div>
-          <div class="stat-box">
-            <strong>זמן</strong>
-            <span>חיסכון בתהליכים</span>
-          </div>
-          <div class="stat-box">
-            <strong>סדר</strong>
-            <span>ניהול פניות ולידים</span>
+          <div class="visual-card secondary">
+            <div class="visual-label">מה זה נותן לעסק</div>
+            <div class="mini-stats">
+              <div class="mini-stat">
+                <strong>תגובה</strong>
+                <span>מהירה יותר ללקוחות</span>
+              </div>
+              <div class="mini-stat">
+                <strong>חיבור</strong>
+                <span>בין טפסים, הודעות ו־CRM</span>
+              </div>
+              <div class="mini-stat">
+                <strong>שליטה</strong>
+                <span>בתהליך ולא רק בשיחה</span>
+              </div>
+              <div class="mini-stat">
+                <strong>דיוק</strong>
+                <span>בסינון והעברת פניות</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -879,7 +1115,7 @@
         לחסוך זמן וליצור תהליך מסודר יותר.
       </p>
 
-      <div class="buttons" style="justify-content:center; margin-top:34px;">
+      <div class="hero-buttons" style="justify-content:center; margin-top:34px;">
         <a href="#contact-form" class="btn btn-dark">לתיאום שיחת היכרות</a>
         <a href="#services" class="btn btn-light">לקבל פרטים נוספים</a>
       </div>
