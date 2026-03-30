@@ -9,226 +9,613 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4efe6;
-      color: #2b2b2b;
+      background: #f3eee4;
+      color: #2a2926;
       line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     .container {
-      width: 90%;
-      max-width: 1200px;
+      width: 92%;
+      max-width: 1250px;
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .site-bg {
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(243, 238, 228, 0.92), rgba(243, 238, 228, 0.96)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
+      opacity: 1;
+      z-index: -3;
+    }
+
+    .texture {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at top, rgba(255,255,255,0.55), transparent 35%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .topbar {
+      border-bottom: 1px solid #d8cdbb;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 14px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #7a7266;
+      font-weight: bold;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 28px;
+      color: #5f5a52;
+      font-size: 15px;
     }
 
     .hero {
-      padding: 80px 0;
-      border-bottom: 1px solid #d8cfbf;
-      background: linear-gradient(to bottom, #f8f4ec, #f4efe6);
+      position: relative;
+      padding: 70px 0 90px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(184,154,99,0.16), transparent 42%);
+      pointer-events: none;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 50px;
       align-items: center;
     }
 
     .badge {
       display: inline-block;
       padding: 10px 18px;
-      border: 1px solid #c9b89b;
-      background: rgba(255,255,255,0.7);
+      border: 1px solid #ccb792;
+      background: rgba(255,255,255,0.72);
       border-radius: 999px;
       font-size: 14px;
-      margin-bottom: 20px;
+      color: #5c554b;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+      margin-bottom: 26px;
     }
 
     h1 {
-      font-size: 56px;
-      line-height: 1.2;
-      margin: 0 0 20px;
+      font-size: 68px;
+      line-height: 1.05;
+      margin: 0 0 24px;
+      letter-spacing: -0.03em;
     }
 
-    .subtitle {
-      font-size: 22px;
-      color: #5a574f;
-      max-width: 700px;
-      margin-bottom: 30px;
+    .hero-subtitle {
+      font-size: 24px;
+      color: #5f5a52;
+      max-width: 760px;
+      margin-bottom: 34px;
+      line-height: 1.8;
     }
 
     .buttons {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 16px;
       margin-bottom: 30px;
     }
 
     .btn {
       display: inline-block;
-      padding: 16px 28px;
+      padding: 17px 30px;
       border-radius: 18px;
-      text-decoration: none;
       font-size: 16px;
-      transition: 0.2s;
+      transition: 0.2s ease;
+      cursor: pointer;
     }
 
     .btn-dark {
       background: #1f1f1f;
       color: white;
+      box-shadow: 0 12px 30px rgba(31,31,31,0.2);
+    }
+
+    .btn-dark:hover {
+      opacity: 0.92;
     }
 
     .btn-light {
-      background: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.84);
       color: #2b2b2b;
-      border: 1px solid #bba98b;
+      border: 1px solid #c8b89b;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .btn-light:hover {
+      background: white;
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 20px;
+      gap: 16px;
+      margin-top: 10px;
     }
 
     .stat-box {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid #e4dac9;
-      border-radius: 22px;
-      padding: 20px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid #dfd5c5;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 15px 35px rgba(80,67,49,0.07);
     }
 
     .stat-box strong {
       display: block;
-      font-size: 28px;
+      font-size: 38px;
       margin-bottom: 8px;
+      line-height: 1;
     }
 
-    .card {
-      background: rgba(255,255,255,0.8);
-      border: 1px solid #d9cfbf;
-      border-radius: 30px;
-      padding: 24px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    .stat-box span {
+      display: block;
+      color: #69645d;
+      font-size: 16px;
     }
 
-    .inner-card {
-      background: #f8f5ef;
-      border: 1px solid #eadfce;
-      border-radius: 24px;
-      padding: 24px;
+    .process-wrap {
+      position: relative;
+    }
+
+    .process-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      background: rgba(255,255,255,0.22);
+      filter: blur(45px);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .process-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid #d8cdbb;
+      border-radius: 34px;
+      padding: 20px;
+      box-shadow: 0 30px 80px rgba(70,57,38,0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .process-inner {
+      background: rgba(248,243,234,0.95);
+      border: 1px solid #e7dccb;
+      border-radius: 28px;
+      padding: 28px;
+    }
+
+    .process-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
     }
 
     .mini-badge {
       display: inline-block;
       background: #ede3d3;
-      padding: 8px 14px;
+      border: 1px solid #e1d5c2;
+      color: #665f55;
       border-radius: 999px;
+      padding: 8px 14px;
       font-size: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+    }
+
+    .process-title {
+      font-size: 34px;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .gear {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      border-radius: 50%;
+      background: linear-gradient(to bottom left, #c8aa70, #a9894f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.2);
     }
 
     .flow-step {
-      background: white;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.95);
       border: 1px solid #ece3d5;
-      border-radius: 18px;
-      padding: 14px 16px;
+      border-radius: 22px;
+      padding: 15px 16px;
       margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .flow-step-number {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 50%;
+      background: #2a2926;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .flow-note {
+      margin-top: 18px;
+      background: #efe5d6;
+      border: 1px solid #dfd0bb;
+      border-radius: 22px;
+      padding: 16px 18px;
+      color: #5a544a;
+      font-size: 16px;
     }
 
     section {
-      padding: 80px 0;
+      position: relative;
+      padding: 95px 0;
+    }
+
+    .section-badge {
+      display: inline-block;
+      padding: 9px 16px;
+      border: 1px solid #d7c7ae;
+      background: rgba(255,255,255,0.66);
+      border-radius: 999px;
+      font-size: 14px;
+      color: #6a635a;
+      margin-bottom: 18px;
+    }
+
+    .center-heading {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 60px;
     }
 
     .section-title {
-      text-align: center;
-      font-size: 40px;
-      margin-bottom: 16px;
+      font-size: 52px;
+      line-height: 1.2;
+      margin: 0 0 18px;
     }
 
     .section-text {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 40px;
-      font-size: 20px;
+      font-size: 22px;
       color: #625d55;
+      line-height: 1.8;
+      margin: 0;
     }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 24px;
     }
 
     .service-box {
-      background: rgba(255,255,255,0.85);
-      border: 1px solid #e4dac9;
-      border-radius: 28px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      background: rgba(255,255,255,0.82);
+      border: 1px solid #e3d8c8;
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(83,71,50,0.06);
+      transition: transform 0.2s ease;
+    }
+
+    .service-box:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      background: linear-gradient(to bottom left, #c9ad77, #ad8f59);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 18px rgba(173,143,89,0.25);
     }
 
     .service-box h3 {
-      margin-top: 0;
-      font-size: 24px;
+      font-size: 28px;
+      margin: 0 0 12px;
     }
 
-    .split-section {
-      background: rgba(255,255,255,0.5);
+    .service-box p {
+      margin: 0;
+      color: #68635c;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .how-section {
       border-top: 1px solid #ddd2c2;
       border-bottom: 1px solid #ddd2c2;
+      background: rgba(255,255,255,0.46);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .step-box {
+      position: relative;
+      overflow: hidden;
+      background: rgba(251,248,242,0.98);
+      border: 1px solid #e4d9c9;
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+    }
+
+    .step-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(to left, #b99b65, #dcc89f);
+    }
+
+    .step-label {
+      font-size: 14px;
+      color: #8d806d;
+      margin-bottom: 12px;
+    }
+
+    .step-box h3 {
+      font-size: 28px;
+      margin: 0 0 12px;
+    }
+
+    .step-box p {
+      margin: 0;
+      color: #656059;
+      font-size: 17px;
+      line-height: 1.9;
     }
 
     .split-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
+      gap: 34px;
+      align-items: start;
     }
 
     .fit-box {
-      background: #f8f5ef;
-      border: 1px solid #e7dccb;
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 14px;
-      font-size: 18px;
-      color: #5d5952;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid #e4d9c8;
+      border-radius: 24px;
+      padding: 20px 22px;
+      color: #575248;
+      font-size: 20px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+      margin-bottom: 16px;
     }
 
     .dark-box {
+      position: sticky;
+      top: 25px;
       background: #1f1f1f;
       color: white;
-      border-radius: 30px;
-      padding: 32px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      border: 1px solid #3c372f;
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: 0 30px 80px rgba(32,26,18,0.22);
+    }
+
+    .dark-label {
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .dark-box h3 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin: 16px 0 18px;
     }
 
     .dark-box p {
-      color: rgba(255,255,255,0.82);
-      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      line-height: 1.9;
+      margin: 0 0 24px;
     }
 
-    .cta {
+    .value-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+
+    .value-box strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .value-box span {
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .cta-section {
+      border-top: 1px solid #ddd2c2;
+      background: linear-gradient(to bottom, #efe6d8, #f3eee4);
       text-align: center;
     }
 
-    .cta p {
-      max-width: 760px;
-      margin: 20px auto 30px;
-      font-size: 20px;
-      color: #605b54;
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    @media (max-width: 960px) {
-      .hero-grid,
-      .split-grid,
-      .services-grid {
-        grid-template-columns: 1fr;
+    .cta-section .section-title {
+      margin-bottom: 22px;
+    }
+
+    .cta-section .section-text {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .contact-box {
+      margin-top: 42px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid #ddd2c2;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.05);
+    }
+
+    .contact-title {
+      font-size: 28px;
+      margin: 0 0 12px;
+    }
+
+    .contact-text {
+      color: #625d55;
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .contact-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #d9cfbf;
+      border-radius: 18px;
+      padding: 16px 18px;
+      font-size: 16px;
+      background: rgba(255,255,255,0.88);
+      color: #2a2926;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: Arial, sans-serif;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #b89a63;
+      box-shadow: 0 0 0 3px rgba(184,154,99,0.12);
+    }
+
+    footer {
+      padding: 30px 0 40px;
+      text-align: center;
+      color: #7b746a;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      h1 {
+        font-size: 54px;
       }
 
+      .hero-grid,
+      .split-grid,
+      .services-grid,
+      .steps-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dark-box {
+        position: static;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .top-links {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero-grid,
+      .split-grid,
+      .services-grid,
+      .steps-grid,
+      .contact-grid,
       .stats {
         grid-template-columns: 1fr;
       }
@@ -237,130 +624,299 @@
         font-size: 40px;
       }
 
+      .hero-subtitle,
+      .section-text,
+      .dark-box p {
+        font-size: 18px;
+      }
+
       .section-title {
+        font-size: 34px;
+      }
+
+      .process-title {
+        font-size: 28px;
+      }
+
+      .service-box h3,
+      .step-box h3 {
+        font-size: 24px;
+      }
+
+      .fit-box {
+        font-size: 18px;
+      }
+
+      .dark-box h3 {
         font-size: 32px;
       }
 
-      .subtitle,
-      .section-text,
-      .cta p {
-        font-size: 18px;
+      section {
+        padding: 70px 0;
+      }
+
+      .hero {
+        padding: 50px 0 70px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="site-bg"></div>
+  <div class="texture"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">LEONARDO</div>
+      <nav class="top-links">
+        <a href="#services">שירותים</a>
+        <a href="#how">איך זה עובד</a>
+        <a href="#about">למה לאונרדו</a>
+        <a href="#contact">יצירת קשר</a>
+      </nav>
+    </div>
+  </header>
 
   <section class="hero">
     <div class="container hero-grid">
+      <div class="process-wrap">
+        <div class="process-card">
+          <div class="process-inner">
+            <div class="process-head">
+              <div>
+                <div class="mini-badge">דוגמה לתהליך</div>
+                <h2 class="process-title">בוט לידים לעסק</h2>
+              </div>
+              <div class="gear">⚙</div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step-number">1</div>
+              <div>לקוח משאיר פנייה</div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step-number">2</div>
+              <div>הבוט מגיב מיידית</div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step-number">3</div>
+              <div>נשאלות שאלות סינון</div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step-number">4</div>
+              <div>המידע נשמר אוטומטית</div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step-number">5</div>
+              <div>הפנייה מועברת להמשך טיפול</div>
+            </div>
+
+            <div class="flow-note">פחות טיפול ידני, יותר תהליך מסודר.</div>
+          </div>
+        </div>
+      </div>
+
       <div>
         <div class="badge">לאונרדו · בוטים ואוטומציות לעסקים</div>
         <h1>טכנולוגיה חכמה<br>שמניעה עסקים קדימה</h1>
-        <div class="subtitle">
+        <div class="hero-subtitle">
           בונים לעסקים בוטים לוואטסאפ וטלגרם, אוטומציות חכמות וחיבורי מערכות
           שמסדרים תהליכים, חוסכים זמן ומשפרים את חוויית הלקוח.
         </div>
 
         <div class="buttons">
-          <a href="#" class="btn btn-dark">לתיאום שיחת היכרות</a>
-          <a href="#" class="btn btn-light">לראות איך זה עובד</a>
+          <a href="#contact" class="btn btn-dark">לתיאום שיחת היכרות</a>
+          <a href="#how" class="btn btn-light">לראות איך זה עובד</a>
         </div>
 
         <div class="stats">
           <div class="stat-box">
             <strong>24/7</strong>
-            מענה אוטומטי
+            <span>מענה אוטומטי</span>
           </div>
           <div class="stat-box">
             <strong>זמן</strong>
-            חיסכון בתהליכים
+            <span>חיסכון בתהליכים</span>
           </div>
           <div class="stat-box">
             <strong>סדר</strong>
-            ניהול פניות ולידים
+            <span>ניהול פניות ולידים</span>
           </div>
         </div>
       </div>
-
-      <div class="card">
-        <div class="inner-card">
-          <div class="mini-badge">אוטומציה</div>
-          <h2>דוגמה לתהליך: בוט לידים בוואטסאפ</h2>
-
-          <div class="flow-step">לקוח משאיר פנייה</div>
-          <div class="flow-step">הבוט שולח תגובה מיידית</div>
-          <div class="flow-step">נשאלות שאלות סינון</div>
-          <div class="flow-step">המידע נשמר אוטומטית</div>
-          <div class="flow-step">הפנייה מועברת לטיפול</div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <section>
+  <section id="services">
     <div class="container">
-      <h2 class="section-title">מה אנחנו בונים לעסקים</h2>
-      <p class="section-text">
-        פתרונות פרקטיים שעוזרים לעסק להגיב מהר יותר, לעבוד מסודר יותר ולהפחית פעולות ידניות שחוזרות על עצמן.
-      </p>
+      <div class="center-heading">
+        <div class="section-badge">השירותים שלנו</div>
+        <h2 class="section-title">מה אנחנו בונים לעסקים</h2>
+        <p class="section-text">
+          פתרונות פרקטיים שעוזרים לעסק להגיב מהר יותר, לעבוד מסודר יותר ולהפחית פעולות ידניות שחוזרות על עצמן.
+        </p>
+      </div>
 
       <div class="services-grid">
         <div class="service-box">
+          <div class="service-icon">01</div>
           <h3>בוטים לוואטסאפ</h3>
-          <p>מענה ראשוני, סינון לידים, איסוף פרטים והעברה לנציג.</p>
+          <p>מענה ראשוני, סינון לידים, איסוף פרטים, ניתוב פניות והעברה לנציג בזמן הנכון.</p>
         </div>
 
         <div class="service-box">
+          <div class="service-icon">02</div>
           <h3>בוטים לטלגרם</h3>
-          <p>בוטים לשירות, התראות, תהליכים פנימיים וקבלת מידע.</p>
+          <p>פתרונות מבוססי טלגרם לשירות, התראות, תהליכים פנימיים וקבלת מידע בצורה מסודרת.</p>
         </div>
 
         <div class="service-box">
+          <div class="service-icon">03</div>
           <h3>אוטומציות עסקיות</h3>
-          <p>חיבור בין טפסים, הודעות, גיליונות, מיילים ו-CRM.</p>
+          <p>חיבור בין טפסים, הודעות, גיליונות, CRM ומיילים כדי לחסוך זמן וליצור תהליך רציף.</p>
         </div>
 
         <div class="service-box">
+          <div class="service-icon">04</div>
           <h3>חיבור מערכות</h3>
-          <p>התאמה בין הכלים שכבר עובדים אצלך בעסק.</p>
+          <p>התאמה בין הכלים שכבר עובדים אצלך בעסק, כדי שכל מידע יזרום נכון ובצורה מסודרת.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="split-section">
+  <section class="how-section" id="how">
+    <div class="container">
+      <div class="center-heading">
+        <div class="section-badge">איך זה עובד</div>
+        <h2 class="section-title">תהליך ברור, מדויק ומותאם לעסק</h2>
+        <p class="section-text">
+          אנחנו בונים תהליך פשוט שמתחיל בפנייה של הלקוח וממשיך עד לטיפול מסודר ויעיל.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-box">
+          <div class="step-label">שלב 1</div>
+          <h3>מבינים את הצורך</h3>
+          <p>מגדירים יחד מה העסק צריך, איפה יש עומס, ואילו פעולות אפשר להפוך לאוטומטיות.</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-label">שלב 2</div>
+          <h3>בונים פתרון מותאם</h3>
+          <p>מתכננים את הזרימה, השאלות, החיבורים והשלבים בצורה שמתאימה לעסק שלך.</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-label">שלב 3</div>
+          <h3>מחברים את המערכות</h3>
+          <p>מחברים בין הבוט, הטפסים, ההודעות, הגיליונות או ה־CRM כדי ליצור תהליך אחד מסודר.</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-label">שלב 4</div>
+          <h3>מייעלים את העבודה</h3>
+          <p>העסק מתחיל לקבל פניות בצורה מסודרת יותר, לחסוך זמן ולהפחית טיפול ידני.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
     <div class="container split-grid">
       <div>
-        <h2 style="font-size:40px; margin-top:0;">למי זה מתאים</h2>
-        <div class="fit-box">עסקים שמקבלים הרבה פניות ורוצים תגובה מהירה ומסודרת.</div>
-        <div class="fit-box">עסקים שעובדים ידנית ורוצים לחסוך זמן בתהליכים חוזרים.</div>
-        <div class="fit-box">עסקים שצריכים לחבר בין מערכות, הודעות, טפסים ולקוחות.</div>
+        <div class="section-badge">למי זה מתאים</div>
+        <h2 class="section-title" style="text-align:right;">לעסקים שרוצים לעבוד חכם יותר</h2>
+        <p class="section-text" style="text-align:right; max-width:unset;">
+          הפתרונות שלנו מתאימים לעסקים שרוצים להגיב מהר יותר, ליצור סדר בתהליך ולחסוך זמן בעבודה שחוזרת על עצמה.
+        </p>
+
+        <div style="margin-top:32px;">
+          <div class="fit-box">עסקים שמקבלים הרבה פניות ורוצים תגובה מהירה ומסודרת</div>
+          <div class="fit-box">עסקים שעובדים ידנית ורוצים לחסוך זמן בתהליכים חוזרים</div>
+          <div class="fit-box">עסקים שצריכים יותר סדר בין הודעות, לידים, לקוחות ומערכות</div>
+          <div class="fit-box">עסקים שרוצים לשפר שירות וליצור חוויית לקוח טובה יותר</div>
+        </div>
       </div>
 
       <div class="dark-box">
-        <div style="opacity:0.7; font-size:14px;">היתרון שלך</div>
-        <h3 style="font-size:34px; margin-top:8px;">פחות התעסקות, יותר תהליך</h3>
+        <div class="dark-label">למה לאונרדו</div>
+        <h3>חשיבה יצירתית.<br>ביצוע מדויק.<br>תהליך שעובד.</h3>
         <p>
-          המטרה היא לא רק לבנות בוט יפה, אלא ליצור לעסק תהליך שעובד בפועל —
-          משלב הפנייה, דרך איסוף המידע ועד המשך טיפול מסודר.
+          אנחנו לא בונים רק בוטים. אנחנו בונים לעסקים תהליכים חכמים שמחברים בין פנייה,
+          מידע, אוטומציה והמשך טיפול — בצורה מסודרת, יעילה ומותאמת לעסק.
         </p>
+
+        <div class="value-box">
+          <strong>חשיבה מותאמת לעסק</strong>
+          <span>פתרון שנבנה לפי הצורך האמיתי ולא לפי תבנית גנרית.</span>
+        </div>
+
+        <div class="value-box">
+          <strong>פתרונות פרקטיים</strong>
+          <span>מיקוד במה שחוסך זמן, עושה סדר ומשפר תהליך.</span>
+        </div>
+
+        <div class="value-box">
+          <strong>טכנולוגיה עם סדר</strong>
+          <span>שילוב נכון בין יצירתיות, אוטומציה ותוצאה עסקית.</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <div class="container">
-      <h2 class="section-title">רוצים לבדוק מה אפשר לייעל בעסק</h2>
-      <p>
-        שיחת היכרות קצרה תעזור להבין איזה בוט או אוטומציה יכולים לחסוך לכם זמן ולסדר את התהליך העסקי.
+  <section class="cta-section" id="contact">
+    <div class="container cta-inner">
+      <div class="section-badge">התחלה נכונה לעסק מסודר יותר</div>
+      <h2 class="section-title">רוצים לבדוק מה אפשר<br>לייעל בעסק</h2>
+      <p class="section-text">
+        שיחת היכרות קצרה תעזור להבין איזה בוט או אוטומציה יכולים להתאים לעסק שלכם,
+        לחסוך זמן וליצור תהליך מסודר יותר.
       </p>
 
-      <div class="buttons" style="justify-content:center;">
-        <a href="#" class="btn btn-dark">להתחיל עכשיו</a>
-        <a href="#" class="btn btn-light">לקבל פרטים נוספים</a>
+      <div class="buttons" style="justify-content:center; margin-top:34px;">
+        <a href="#contact-form" class="btn btn-dark">לתיאום שיחת היכרות</a>
+        <a href="#services" class="btn btn-light">לקבל פרטים נוספים</a>
+      </div>
+
+      <div class="contact-box" id="contact-form">
+        <h3 class="contact-title">השאירו פרטים ונחזור אליכם</h3>
+        <div class="contact-text">
+          רוצים לבדוק איך בוטים ואוטומציות יכולים להתאים לעסק שלכם? השאירו פרטים ונחזור אליכם לשיחת היכרות קצרה.
+        </div>
+
+        <form>
+          <div class="contact-grid">
+            <div>
+              <input type="text" placeholder="שם מלא" />
+            </div>
+            <div>
+              <input type="tel" placeholder="טלפון" />
+            </div>
+            <div>
+              <input type="text" placeholder="שם העסק" />
+            </div>
+            <div>
+              <input type="text" placeholder="אימייל" />
+            </div>
+            <div class="full">
+              <textarea placeholder="מה תרצו לייעל בעסק"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-dark" style="border:none;">שליחה</button>
+        </form>
       </div>
     </div>
   </section>
 
+  <footer>
+    לאונרדו · בוטים ואוטומציות לעסקים
+  </footer>
 </body>
 </html>
